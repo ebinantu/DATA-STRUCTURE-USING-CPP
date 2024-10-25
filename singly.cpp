@@ -1,21 +1,15 @@
 #include <iostream>
 using namespace std;
-
-
-struct NODE
-{
+struct NODE{
  int data;
  struct NODE *ptr;
 };
 typedef struct NODE node;
-
-
-class linkedlist
-{
+class linkedlist{
  int count = 0;
  node *head,*first,*current;
  public:
- Operation()
+ linkedlist()
  {first = nullptr;}
  void ins_beg();
  void ins_last();
@@ -25,12 +19,9 @@ class linkedlist
  void del_spe();
  void display();
  void create();
-
+ void operations();
 };
-
-
-void linkedlist::ins_beg()
-{
+void linkedlist::ins_beg(){
  char choice;
  do
  {
@@ -51,9 +42,10 @@ void linkedlist::ins_beg()
   cin>>choice;
  }while(choice == 'Y' || choice == 'y');
 }
-
-void linkedlist::create()
-{
+void linkedlist::create(){
+ins_last();
+}
+void linkedlist::ins_last(){
  char choice;
  do
  {
@@ -73,32 +65,7 @@ void linkedlist::create()
   cin>>choice;
  }while(choice == 'Y' || choice == 'y');
 }
-
-void linkedlist::ins_last()
-{
- char choice;
- do
- {
-  count++;
-  head  = new node;
-  cout<<"Enter the number: ";
-  cin>>head ->data;
-  head ->ptr = nullptr;
-  if(first == nullptr)
-   first = current = head ;
-  else
-  {
-   current->ptr = head ;
-   current = head ;
-  }
-  cout<<"\nDo you want to enter again(y/n): ";
-  cin>>choice;
- }while(choice == 'Y' || choice == 'y');
-}
-
-
-void linkedlist::ins_spe()
-{
+void linkedlist::ins_spe(){
 char choice;
  int pos,dup_count = 1;
  node *temp;
@@ -106,14 +73,14 @@ char choice;
   cout<<"Not sufficient nodes to perform this";
  else
  {
+  do{
   cout<<"Enter the position to be inserted: ";
   cin>>pos;
-  if(pos<1||pos>count)
+  if(pos<1||pos>count){
    cout<<"Only "<<count<<" nodes are present enter valid number";
+   }
   else
   {
-   do
-   {
     count++;
     head  = new node;
     cout<<"Enter the data: ";
@@ -128,19 +95,14 @@ char choice;
     temp = current->ptr;
     current->ptr = head ;
     head ->ptr = temp;
-    current = current->ptr;
-    dup_count = 1;
-    while(current->ptr != nullptr)
-     current = current->ptr;
+   }
     cout<<"Do you want to perform again(y/n): ";
+    cin>>choice;
+  
    }while(choice == 'Y' || choice == 'y');
-  }
  }
 }
-
-
-void linkedlist::del_beg()
-{
+void linkedlist::del_beg(){
  char choice;
  node *temp = nullptr;
  do
@@ -160,10 +122,7 @@ void linkedlist::del_beg()
   }
  }while(choice == 'y' || choice == 'Y');
 }
-
-
-void linkedlist::del_last()
-{
+void linkedlist::del_last(){
  char choice;
  node *temp = nullptr;
  do
@@ -186,10 +145,7 @@ void linkedlist::del_last()
   }
  }while(choice == 'Y' || choice == 'y');
 }
-
-
-void linkedlist::del_spe()
-{
+void linkedlist::del_spe(){
  char choice;
  node *temp,*del;
  int pos,dup_count = 2;
@@ -223,8 +179,7 @@ void linkedlist::del_spe()
   }
  }while(choice == 'Y' || choice == 'y');
 }
-void linkedlist::display()
-{ 
+void linkedlist::display(){ 
    int dup_count=1;
    NODE *temp;
    if(count<1)
@@ -234,38 +189,36 @@ void linkedlist::display()
      temp=first;
      while(temp!=NULL)
      {
-       cout<<"Node:"<<dup_count<<" data:"<<temp->data;
+       cout<<"Node:"<<dup_count<<" data:"<<temp->data<<endl;;
        temp=temp->ptr;
        dup_count++;
      }
    }
 }
-int main()
-{
-   char a;
+void linkedlist::operations(){
+    char a;
    int i;
-  linkedlist b;
-  do{
-  cout<<"enter the operation you want to perform\n0-create a linked list\n1-insertion at begining\n2-insertion at last\n3-insertion at specific location\n4-deletion from  begining\n5-deletion from last()\n6-deletion from specficlocation ()\n7-display():\n" ;
+do{
+  cout<<"enter the operation you want to perform\n0-create a linked list\n1-insertion at begining\n2-insertion at last\n3-insertion at specific location\n4-deletion from  begining\n5-deletion from last()\n6-deletion from specficlocation ()\n7-display():" ;
   cin>>i;
   switch(i){ 
-    case 0:b.create()
+    case 0:create();
            break;
-    case 1:b.ins_beg();
+    case 1:ins_beg();
            break;
-    case 2: b.ins_last();
+    case 2:ins_last();
            break;
-    case 3:b.ins_spe();
+    case 3:ins_spe();
            break;
-    case 4:b.del_beg();
+    case 4:del_beg();
            break;
-    case 5:b.del_last();
+    case 5:del_last();
            break;
-    case 6:b.del_spe();
+    case 6:del_spe();
            break;
-    case 7:b.display();
+    case 7:display();
            break;
-           
+    default:cout<<"wrong input";       
            
    }
    
@@ -274,14 +227,9 @@ int main()
    
    }while(a=='y'||a=='Y');
 }
-  
- 
- 
-
-
-  
-
- 
-  
- 
- 
+int main(){
+   char a;
+   int i;
+  linkedlist b;
+  b.operations();
+}
