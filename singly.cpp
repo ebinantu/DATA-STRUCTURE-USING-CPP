@@ -114,9 +114,9 @@ void linkedlist::del_beg(){
    temp = first;
    first = first->ptr;
    delete temp;
-   if(count == 1)
-    first = nullptr;
    count--;
+   if(count < 1)
+    first = nullptr;
    cout<<"Do you want to perform again(y/n): ";
    cin>>choice;
   }
@@ -135,11 +135,11 @@ void linkedlist::del_last(){
    while(temp->ptr != current)
     temp = temp->ptr;
    delete current;
+   count--;
    current = temp;
    current->ptr = nullptr;
-   if(count == 1)
+   if(count< 1)
     first = nullptr;
-   count--;
    cout<<"Do you want to perform again(y/n): ";
    cin>>choice;
   }
@@ -148,7 +148,7 @@ void linkedlist::del_last(){
 void linkedlist::del_spe(){
  char choice;
  node *temp,*del;
- int pos,dup_count = 2;
+ int pos,dup_count = 1;
  do
  {
   if(count<1)
@@ -162,17 +162,17 @@ void linkedlist::del_spe(){
    else
    {
     temp = first;
-    while(dup_count <= pos-1)
+    while(dup_count < pos)
     {
      temp = temp->ptr;
      dup_count++;
     }
-    
-    temp->ptr = del->ptr;
+    del=temp->ptr;
+    temp->ptr=del->ptr;
     delete del;
-    if(count == 1)
+     count--;
+    if(count < 1)
      first = nullptr;
-    count--;
     cout<<"Do you want to perform again(y/n): ";
     cin>>choice;
    }
@@ -189,7 +189,7 @@ void linkedlist::display(){
      temp=first;
      while(temp!=NULL)
      {
-       cout<<"Node:"<<dup_count<<" data:"<<temp->data<<endl;;
+       cout<<"Node:"<<dup_count<<" data:"<<temp->data<<endl;
        temp=temp->ptr;
        dup_count++;
      }
@@ -199,7 +199,7 @@ void linkedlist::operations(){
     char a;
    int i;
 do{
-  cout<<"enter the operation you want to perform\n0-create a linked list\n1-insertion at begining\n2-insertion at last\n3-insertion at specific location\n4-deletion from  begining\n5-deletion from last()\n6-deletion from specficlocation ()\n7-display():" ;
+  cout<<"enter the operation you want to perform\n0-create a linked list\n1-insertion at begining\n2-insertion at last\n3-insertion at specific location\n4-deletion from  begining\n5-deletion from last\n6-deletion from specficlocation \n7-display:" ;
   cin>>i;
   switch(i){ 
     case 0:create();
