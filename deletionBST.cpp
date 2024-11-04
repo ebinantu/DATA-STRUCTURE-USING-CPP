@@ -121,6 +121,7 @@ void delet()
     cout<<"enter the data you want to delete:";
     cin>>i;
     deleteNode(root,i);
+    inorder();
     cout<<"\nDo you Want to Delete again:[y/n]:";
     cin>>choice;
 }while(choice=='Y'||choice=='y');
