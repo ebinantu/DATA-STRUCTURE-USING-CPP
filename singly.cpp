@@ -68,7 +68,7 @@ void linkedlist::ins_last(){
 void linkedlist::ins_spe(){
 char choice;
  int pos,dup_count = 1;
- node *temp;
+ node *temp,tempc;
  if(count<1)
   cout<<"Not sufficient nodes to perform this";
  else
@@ -79,6 +79,10 @@ char choice;
   if(pos<1||pos>count){
    cout<<"Only "<<count<<" nodes are present enter valid number";
    }
+    if(pos == 1)
+    {
+       ins_beg();
+    }
   else
   {
     count++;
@@ -86,15 +90,16 @@ char choice;
     cout<<"Enter the data: ";
     cin>>head->data;
     head ->ptr = nullptr;
-    current = first;
+     tempc = first;
     while(dup_count < pos-1)
     {  
-     current = current->ptr;
+     tempc = tempc->ptr;
      dup_count++;
     }
-    temp = current->ptr;
-    current->ptr = head ;
+    temp = tempc->ptr;
+    tempc->ptr = head ;
     head ->ptr = temp;
+   dup_count=1;
    }
     cout<<"Do you want to perform again(y/n): ";
     cin>>choice;
@@ -148,13 +153,13 @@ void linkedlist::del_last(){
 void linkedlist::del_spe(){
  char choice;
  node *temp,*del;
- int pos,dup_count = 1;
- do
- {
+ int pos,dup_count = 2;
   if(count<1)
    cout<<"Not enough nodes to perform operation";
+   choice='n';
   else
   {
+    do{
    cout<<"Enter the position to delete: ";
    cin>>pos;
    if(pos<1 || pos>count)
@@ -170,15 +175,15 @@ void linkedlist::del_spe(){
     del=temp->ptr;
     temp->ptr=del->ptr;
     delete del;
-     count--;
     if(count < 1)
      first = nullptr;
+     count--;
+    dup_count=2;
     cout<<"Do you want to perform again(y/n): ";
     cin>>choice;
    }
-  }
- }while(choice == 'Y' || choice == 'y');
-}
+  }while(choice == 'Y' || choice == 'y');
+}}
 void linkedlist::display(){ 
    int dup_count=1;
    NODE *temp;
