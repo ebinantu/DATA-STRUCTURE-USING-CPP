@@ -7,11 +7,15 @@ struct NODE {
 };
 typedef struct NODE node;
 
-class linkedlist {
+class linkedlist 
+{
     int count = 0;
     node* head, * first, * current;
 public:
-    linkedlist() { first = nullptr; current = nullptr; }
+    linkedlist() 
+    {
+     first = nullptr; current = nullptr; 
+     }
     void ins_beg();
     void ins_last();
     void ins_spe();
@@ -19,7 +23,6 @@ public:
     void del_last();
     void del_spe();
     void display();
-    void create();
     void operations();
 };
 
@@ -146,7 +149,7 @@ void linkedlist::del_last() {
 void linkedlist::del_spe() {
     char choice;
     node* temp, * del;
-    int pos, dup_count = 1;
+    int pos, dup_count = 2;
     if (count < 1) {
         cout << "Not enough nodes to perform operation";
         choice = 'n';
@@ -182,7 +185,7 @@ void linkedlist::del_spe() {
                 if (count == 1)
                     first = nullptr;
                 count--;
-                dup_count = 1;
+                dup_count = 2;
             }
             cout << "Do you want to perform again(y/n): ";
             cin >> choice;
@@ -209,10 +212,9 @@ void linkedlist::operations() {
     char a;
     int i;
     do {
-        cout << "Enter the operation you want to perform\n0-create a linked list\n1-insertion at beginning\n2-insertion at last\n3-insertion at specific location\n4-deletion from beginning\n5-deletion from last\n6-deletion from specific location\n7-display: ";
+        cout << "Enter the operation you want to perform\n1-insertion at beginning\n2-insertion at last\n3-insertion at specific location\n4-deletion from beginning\n5-deletion from last\n6-deletion from specific location\n7-display: ";
         cin >> i;
         switch (i) {
-        case 0: create(); break;
         case 1: ins_beg(); break;
         case 2: ins_last(); break;
         case 3: ins_spe(); break;
