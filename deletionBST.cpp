@@ -96,7 +96,7 @@ node *temp = root->left;
 delete root;
 return temp;
 }
-node* temp = minValueNode(root->right);
+node* temp = minValueNode(root->right);//To find the inorder successor (smallest in the right subtree)
 root->data = temp->data;
 root->right = deleteNode(root->right, temp->data);
 }
