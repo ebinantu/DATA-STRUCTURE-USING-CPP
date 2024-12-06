@@ -120,7 +120,7 @@ void delet()
  do{
     cout<<"enter the data you want to delete:";
     cin>>i;
-    deleteNode(root,i);
+    root= deleteNode(root,i);
     inorder();
     cout<<"\nDo you Want to Delete again:[y/n]:";
     cin>>choice;
