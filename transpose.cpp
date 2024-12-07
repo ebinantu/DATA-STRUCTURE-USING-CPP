@@ -86,8 +86,8 @@ public:
   
         for(i = 1; i <= h; i++) 
         {
-            int row = s[i][1];
-            int col = s[i][0];
+            int row = s[i][0];
+            int col = s[i][1];
             tra[row][col] = s[i][2];
         }
 
