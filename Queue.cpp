@@ -8,7 +8,7 @@ class queue{
   void deletion();
   void display();
 };
-void stack::accept(){
+void queue::accept(){
   rear=-1;
   front=0;
 cout<<"Enter the Size of the Queue:" ;
@@ -30,7 +30,7 @@ void queue::insertion(){
     else 
     { 
     cout<<"Enter the Element to push:";
-    cin>>s[tos];
+    cin>>s[rear];
     cout<<"\nDo you want to push aqain?(y/n):";
     cin>>v;
     }
@@ -79,7 +79,7 @@ void queue::display()
 }
 int main()
 { 
-stack obj;
+queue obj;
 char h;
 int i;
 obj.accept();
@@ -89,9 +89,9 @@ do
   cin>>i;
   switch(i)
   { 
-  case 1:obj.push();
+  case 1:obj.insertion();
          break;
-  case 2:obj.pop();
+  case 2:obj.deletion();
          break;
   case 3:obj.display();
          break;
