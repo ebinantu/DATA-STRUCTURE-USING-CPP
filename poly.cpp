@@ -2,7 +2,7 @@
 using namespace std;
 class Poly
 {
-	int i,size,size2,limit,a[10],b[10],sum[10],flag1,flag2;
+	int i,size,size2,limit,a[10],b[10],sum[20],flag1,flag2;
 public:
 	void accept();
 	void display();
@@ -20,12 +20,12 @@ void Poly::accept()
 	else
 		limit = size2;
 		
-		
-             for(i=0;i<limit;i++){
+for(i=0;i<limit;i++)
+{
 		  a[i]=0;
 		  b[i]=0;
 		  sum[i]=0;
-		  }
+  }
 	for(i=size-1; i>=0; i--)
 	{
 		cout<<"Enter term for first having exponent "<<i<<": ";
@@ -42,38 +42,23 @@ void Poly::accept()
 			flag2 = 1;
 	}
 }
-
-
 void Poly::add()
 {
 	for(i=0; i<limit; i++)
 		sum[i] = a[i] + b[i];
 }
-
 void Poly::display()
 {
 	if(flag1 == 1||flag2 == 1)
 	{
 		cout<<"\nPolynomial sum: ";
-		for(i=limit-1; i>=0; i--)
-		{
-			if(i == 0&&sum[i] != 0)
-				cout<<sum[i];
-			else
-			{
-				if(sum[i] != 0)
-					cout<<sum[i]<<"x";
-				if(i!=1&&sum[i] != 0)
-					cout<<"^"<<i;
-				if(sum[i]!=0&&i!= 0)
-					cout<<" + ";
-			}
-		}
+		for(i=limit-1; i>0; i--)
+		    cout<<sum[i]<<"x^"<<i<<"+";
+		cout<<sum[i];
 	}
 	else
      cout<<"Polynomial sum is: 0";
 }
-
 int main()
 {
 	Poly obj;
