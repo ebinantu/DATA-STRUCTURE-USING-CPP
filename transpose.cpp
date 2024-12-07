@@ -41,7 +41,7 @@ public:
         }
         s[0][2] = h;
         cout << "**SPARSE MATRIX**\n";
-        for(i = 0; i <= h+1; i++) 
+        for(i = 0; i <=h; i++) 
         {
             for(j = 0; j < 3; j++) 
             {
@@ -67,7 +67,7 @@ public:
     void transpose() 
     {
         int i, j, b;
-        for(i = 1; i <= h; i++) 
+        for(i = 0; i <= h; i++) 
         {
             b = s[i][0];
             s[i][0] = s[i][1];
@@ -106,7 +106,7 @@ public:
         {
             for(j = 0; j < r; j++)
              {
-                cout << tra[j][i] << "  ";
+                cout << tra[i][j] << "  ";
             }
             cout << "\n";
         }
