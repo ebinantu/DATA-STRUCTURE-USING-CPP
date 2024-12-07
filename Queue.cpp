@@ -59,7 +59,13 @@ else
 { 
 item=s[front];
 cout<<"Element:"<<s[front]<<"is poped\n";
+  if(front==rear)
+  {
+    rear=-1;
+    front=0;
+  } else{
 front++;
+  }
 cout<<"Do you want pop again(y/n):";
 cin>>v;
 if(v!='y'&&v!='Y')
