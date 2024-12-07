@@ -41,7 +41,7 @@ public:
         }
         s[0][2] = h;
         cout << "**SPARSE MATRIX**\n";
-        for(i = 0; i <= h; i++) 
+        for(i = 0; i <= h+1; i++) 
         {
             for(j = 0; j < 3; j++) 
             {
