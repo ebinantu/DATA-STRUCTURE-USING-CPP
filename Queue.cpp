@@ -4,8 +4,8 @@ class queue{
   int s[20],size,front,rear;
   public:
   void accept();
-  void push();
-  void pop();
+  void insertion();
+  void deletion();
   void display();
 };
 void stack::accept(){
@@ -16,12 +16,12 @@ cin>>size;
 
 } 
 
-void queue::push(){ 
+void queue::insertion(){ 
  
  char v;
  while(1)
  { 
-    tos++;
+    rear++;
     if(rear>=size)
     { 
     cout<<"Queue overflow\n";
@@ -39,7 +39,7 @@ void queue::push(){
 }
 cout<<"Popping Completed\n";
 }
-void queue::pop()
+void queue::deletion()
 { 
 char v;
 int item;
@@ -52,9 +52,9 @@ if(front>rear)
 }
 else
 { 
-item=s[tos];
+item=s[front];
 front++;
-cout<<"Element:"<<s[tos]<<"is poped\n";
+cout<<"Element:"<<s[front]<<"is poped\n";
 
 cout<<"Do you want pop again(y/n):";
 cin>>v;
