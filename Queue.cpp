@@ -3,6 +3,11 @@ using namespace std;
 class queue{ 
   int s[20],size,front,rear;
   public:
+  queue()
+  { 
+      front=0;
+      rear=-1;
+  }
   void accept();
   void insertion();
   void deletion();
@@ -45,7 +50,7 @@ char v;
 int item;
 while(1)
 {
-if(front>rear)
+if(front>rear-1)
 { 
   cout<<"Queue underflow";
   break;
@@ -53,9 +58,8 @@ if(front>rear)
 else
 { 
 item=s[front];
-front++;
 cout<<"Element:"<<s[front]<<"is poped\n";
-
+front++;
 cout<<"Do you want pop again(y/n):";
 cin>>v;
 if(v!='y'&&v!='Y')
