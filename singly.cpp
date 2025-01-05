@@ -93,9 +93,8 @@ void linkedlist::ins_spe() {
                     tempc = tempc->ptr;
                     dup_count++;
                 }
-                temp = tempc->ptr;
+                head->ptr=tempc->ptr;
                 tempc->ptr = head;
-                head->ptr = temp;
                 dup_count = 1;
             }
             cout << "Do you want to perform again(y/n): ";
